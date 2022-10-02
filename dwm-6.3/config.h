@@ -13,7 +13,7 @@ static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const char *fonts[]          = { "terminus:size=10", "Hack Nerd Font:size=10"};
-static const char dmenufont[]       = "terminus=10";
+static const char dmenufont[]       = "terminus:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#1e1e1e";
 static const char col_gray3[]       = "#bbbbbb";
