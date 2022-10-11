@@ -12,7 +12,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static const char *fonts[]          = { "terminus:size=10", "Hack Nerd Font:size=10"};
+static const char *fonts[]          = { "terminus:size=10", "Hack Nerd Font:size=9"};
 static const char dmenufont[]       = "terminus:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#1e1e1e";
@@ -35,14 +35,14 @@ static const Rule rules[] = {
 	 */
 	/* class            instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",            NULL,       NULL,       0,            1,           -1 },
-	{ "firefox",         NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Firefox",         NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Pcmanfm",         NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "Deluge",          NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Brave-browser",   NULL,       NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.65; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -83,9 +83,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_x,           spawn,          {.v = powercmd } },
 	{ MODKEY,                       XK_KP_Add,      spawn,          {.v = volupcmd } },
 	{ MODKEY,                       XK_KP_Subtract, spawn,          {.v = voldowncmd } },
-   	{ MODKEY,                       XK_Right,	    shiftview,      { .i = +1 } },
-	{ MODKEY,                       XK_Left,	    shiftview,      { .i = -1 } },
-   	{ MODKEY|ShiftMask,             XK_k,	        shiftview,      { .i = +1 } },
+  { MODKEY,                       XK_period,	    shiftview,      { .i = +1 } },
+	{ MODKEY,                       XK_comma,	    shiftview,      { .i = -1 } },
+  { MODKEY|ShiftMask,             XK_k,	        shiftview,      { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_j,	        shiftview,      { .i = -1 } },
 	{ MODKEY,                       XK_b,      togglebar,           {0} },
 	{ MODKEY,                       XK_j,      focusstack,          {.i = +1 } },
@@ -104,8 +104,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating,      {0} },
 	{ MODKEY,                       XK_0,      view,                {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,                 {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,            {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,            {.i = +1 } },
+	{ MODKEY,                       XK_Left,  focusmon,            {.i = -1 } },
+	{ MODKEY,                       XK_Right, focusmon,            {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,              {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,              {.i = +1 } },
 	{ MODKEY,                       XK_minus,  setgaps,             {.i = -1 } },
