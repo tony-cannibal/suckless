@@ -47,7 +47,7 @@ parsefifo()
 	while read -r line; do
 		case $line in
 			T*)
-                time="^c#377375^ ^d^${line#?}"
+                time="^c#377375^ ^d^${line#?}"
                 ;;
             R*)
                 memory="^c#377375^󰍛 ^d^${line#?}"

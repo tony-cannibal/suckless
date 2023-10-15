@@ -16,12 +16,12 @@ static const int focusonwheel               = 0;
 static char font[]                          = "terminus:size=10";
 static char dmenufont[]                     = "terminus:size=10";
 static const char *fonts[]                  = { "terminus:size=10", "TerminessTTF Nerd Font:size=9" };
-static char normbgcolor[]                   = "#222222";
+static char normbgcolor[]                   = "#1e1e1e";
 static char normbordercolor[]               = "#444444";
-static char normfgcolor[]                   = "#bbbbbb";
-static char selfgcolor[]                    = "#eeeeee";
-static char selbordercolor[]                = "#005577";
-static char selbgcolor[]                    = "#005577";
+static char normfgcolor[]                   = "#e6d4a3";
+static char selfgcolor[]                    = "#e6d4a3";
+static char selbordercolor[]                = "#377375";
+static char selbgcolor[]                    = "#377375";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
