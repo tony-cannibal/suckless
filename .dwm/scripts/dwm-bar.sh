@@ -14,7 +14,7 @@ separator="|"
 clock()
 {
     while :; do
-        date +"T%l:%M %P "
+        date +"T%l:%M%P "
         sleep 10
     done
 }
@@ -47,19 +47,22 @@ parsefifo()
 	while read -r line; do
 		case $line in
 			T*)
-                time="^c#377375^ ^d^${line#?}"
+                time=$( echo "${line#?}" | sed -r "s/^[[:blank:]]+|[[:blank:]]+$//g")
+                time="^c#377375^ ^d^${time}"
                 ;;
             R*)
                 memory="^c#377375^󰍛 ^d^${line#?}"
                 ;;
 			V*)
-                vol="^c#377375^ ^d^${line#?}"
+
+                vol=$( echo "${line#?}" | sed -r "s/^[[:blank:]]+|[[:blank:]]+$//g")
+                vol="^c#377375^ ^d^${vol}"
                 ;;
             H*)
                 disk="^c#377375^󰋊 ^d^${line#?}"
                 ;;
 		esac
-		xsetroot -name "[${disk}][${memory}][${vol}][${time}]"
+		xsetroot -name "[${disk}][${memory}][${vol}][${time}] "
 	done
 }
 
