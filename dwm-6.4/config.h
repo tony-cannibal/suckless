@@ -56,7 +56,7 @@ static const Rule rules[] = {
 	{ "Gimp",            NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",         NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Pcmanfm",         NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "nemo",            NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Nemo",            NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "Deluge",          NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Brave-browser",   NULL,       NULL,       1 << 1,       0,           -1 },
 	{ NULL,           "spterm",      NULL,      SPTAG(0),      1,           -1 },

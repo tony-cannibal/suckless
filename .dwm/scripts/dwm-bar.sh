@@ -62,7 +62,7 @@ parsefifo()
                 disk="^c#377375^󰋊 ^d^${line#?}"
                 ;;
 		esac
-		xsetroot -name "[${disk}][${memory}][${vol}][${time}] "
+		xsetroot -name " [${disk}][${memory}][${vol}][${time}] "
 	done
 }
 
