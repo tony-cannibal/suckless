@@ -29,8 +29,15 @@ memory()
 
 disk()
 {
+    # while :; do
+    #     printf 'H%s\n' "$(df -h /home | tail -n 1 | awk '{print $4}')"
+    #     sleep 4
+    # done
+
     while :; do
-        printf 'H%s\n' "$(df -h /home | tail -n 1 | awk '{print $4}')"
+        R=$(df -h /home | tail -n 1 | awk '{print $4}')
+        M=$(df -h /home/luis/.media | tail -n 1 | awk '{print $4}')
+        echo "HR:$R M:$M"
         sleep 4
     done
 }
@@ -40,9 +47,25 @@ volume()
         printf 'V%s\n' "$(pamixer --get-volume-human)"
 }
 
+internet()
+{
+
+    while :; do
+        # C=$(wget -q --spider http://google.com ; echo $?)
+        # echo "C$C"
+
+        if timeout 1 sh -c "true >/dev/tcp/8.8.8.8/53" ;then
+            echo "C1"
+        else
+            echo "C0"
+        fi
+        sleep 2
+    done
+}
+
 parsefifo()
 {
-	typeset time='' vol=''  s="$separator" memory='' disk=''
+	typeset time='' vol=''  s="$separator" memory='' disk='' con=''
 
 	while read -r line; do
 		case $line in
@@ -61,8 +84,17 @@ parsefifo()
             H*)
                 disk="^c#377375^󰋊 ^d^${line#?}"
                 ;;
+            C*)
+                res=$( echo "${line#?}" | sed -r "s/[[:blank:]]//g")
+                if [ $res -eq 1 ]; then
+                    con=" ^c#377375^󰈁 ^d^"
+                    # con="^c#377375^󰈁 ^d^${line#?}"
+                else
+                    con=" ^c#cc241d^󰈂 ^d^"
+                fi 
+                ;;
 		esac
-		xsetroot -name " [${disk}][${memory}][${vol}][${time}] "
+		xsetroot -name " [${disk}][${memory}][${vol}][${con}][${time}] "
 	done
 }
 
@@ -71,6 +103,7 @@ clock > "$fifo" &
 memory > "$fifo" &
 disk > "$fifo" &
 volume > "$fifo" &
+internet > "$fifo" &
 
 parsefifo < "$fifo"
 
