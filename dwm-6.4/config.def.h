@@ -13,9 +13,9 @@ static const int showsystray                = 1;     /* 0 means no systray */
 static int showbar                          = 1;        /* -1 means no bar */
 static int topbar                           = 1;        /* 0 means bottom bar */
 static const int focusonwheel               = 0;
-static char font[]                          = "Iosevka Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
-static char dmenufont[]                     = "Iosevka Nerd Font Mono:pixelsize=14:antialias=true:autohint=true";
-static const char *fonts[]                  = { "Iosevka Nerd Font Mono:pixelsize=12:antialias=true:autohint=true", "TerminessTTF Nerd Font:size=9" };
+static char font[]                          = "Iosevka Nerd Font Mono:size=12:antialias=true:autohint=true";
+static char dmenufont[]                     = "Iosevka Nerd Font Mono:size=14:antialias=true:autohint=true";
+static const char *fonts[]                  = { "Iosevka Nerd Font Mono:size=12:antialias=true:autohint=true", "TerminessTTF Nerd Font:size=9" };
 static char normbgcolor[]                   = "#1e1e1e";
 static char normbordercolor[]               = "#444444";
 static char normfgcolor[]                   = "#e6d4a3";
@@ -90,7 +90,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-l", "14", "-x", "556", "-y", "200", "-z", "260",
+static const char *dmenucmd[] = { "dmenu_run", "-l", "14", "-x", "830", "-y", "200", "-z", "260",
                                   "-p", "Apps:", "-bw", "3","-fn", dmenufont, "-nb", normbgcolor,
                                   "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 

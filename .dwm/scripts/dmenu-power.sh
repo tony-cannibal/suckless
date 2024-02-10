@@ -11,7 +11,7 @@ function powermenu {
 
     options="Shutdown\nReboot\nLogout\nCancel"
 
-    selected=$(echo -e $options | dmenu -bw 3 -l 4 -z 120 -x 1240 -y 16 -p "Power Menu" -sb $base -sf $fg -nb $bg -nf $fg )
+    selected=$(echo -e $options | dmenu -bw 3 -l 4 -z 132 -x 1787 -y 21 -p "Power Menu" -sb $base -sf $fg -nb $bg -nf $fg )
 
     if [[ $selected = "Shutdown" ]]; then
         # loginctl poweroff
