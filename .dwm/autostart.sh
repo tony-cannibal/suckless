@@ -1,3 +1,12 @@
+#!/bin/bash
+
+run() {
+  if ! pgrep -f "$1" ;
+  then
+    "$@" &
+  fi
+}
+
 
 xset s off -dpms
 
@@ -5,18 +14,25 @@ xset r rate 350 60
 
 setxkbmap -option caps:swapescape
 
-lxpolkit &
+# mpd &
+run "mpd"
 
-udiskie &
-
-$HOME/.dwm/scripts/dwm-bar.sh &
+# $HOME/.dwm/scripts/dwm-bar.sh &
+$HOME/.config/suckless/.dwm/lstat.sh &
 
 feh --bg-fill $HOME/.dwm/Wallpapers/android.png &
 
 picom --config $HOME/.dwm/picom/picom.conf &
 
-mpd &
+
+# lxpolkit &
+run "lxpolkit"
+
+# udiskie &
+run "udiskie"
 
 wmname LG3D
 
-numlockx on &
+# numlockx on &
+run "numlockx on"
+

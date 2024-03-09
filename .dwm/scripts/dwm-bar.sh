@@ -87,7 +87,7 @@ parsefifo()
             C*)
                 res=$( echo "${line#?}" | sed -r "s/[[:blank:]]//g")
                 if [ $res -eq 1 ]; then
-                    con=" ^c#377375^󰈁 ^d^"
+                    con=" ^c#377375^󰈀 ^d^Up"
                     # con="^c#377375^󰈁 ^d^${line#?}"
                 else
                     con=" ^c#cc241d^󰈂 ^d^"
