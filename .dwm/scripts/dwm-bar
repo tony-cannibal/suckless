@@ -1,3 +1,5 @@
+#!/bin/bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 fifo="/tmp/dwm-bar.fifo"
 
@@ -63,6 +65,11 @@ internet()
     done
 }
 
+icon="#377375"
+alert="#cc241d"
+
+
+
 parsefifo()
 {
 	typeset time='' vol=''  s="$separator" memory='' disk='' con=''
@@ -71,30 +78,45 @@ parsefifo()
 		case $line in
 			T*)
                 time=$( echo "${line#?}" | sed -r "s/^[[:blank:]]+|[[:blank:]]+$//g")
-                time="^c#377375^ ^d^${time}"
+                time="^c${icon}^ ^d^${time}"
                 ;;
             R*)
-                memory="^c#377375^󰍛 ^d^${line#?}"
+                memory="^c${icon}^󰍛 ^d^${line#?}"
                 ;;
 			V*)
 
                 vol=$( echo "${line#?}" | sed -r "s/^[[:blank:]]+|[[:blank:]]+$//g")
-                vol="^c#377375^ ^d^${vol}"
+                vol="^c${icon}^ ^d^${vol}"
                 ;;
             H*)
-                disk="^c#377375^󰋊 ^d^${line#?}"
+                disk="^c${icon}^󰋊 ^d^${line#?}"
                 ;;
             C*)
                 res=$( echo "${line#?}" | sed -r "s/[[:blank:]]//g")
                 if [ $res -eq 1 ]; then
-                    con=" ^c#377375^󰈀 ^d^Up"
+                    con="^c${icon}^󰈀 ^d^Up"
                     # con="^c#377375^󰈁 ^d^${line#?}"
                 else
-                    con=" ^c#cc241d^󰈂 ^d^"
+                    con="^c${alert}^󰈂 ^d^"
                 fi 
                 ;;
-		esac
-		xsetroot -name " [${disk}][${memory}][${vol}][${con}][${time}] "
+            M*)
+                song=${line#?}
+                # xtitle output
+                case $song in
+                    P*)
+                        mpd="^c${icon}^󰏤^d^ ${song#?}"
+                    ;;
+                    p*)
+                        mpd="^c${icon}^^d^ ${song#?}"
+                    ;;
+                    s*)
+                        mpd="${song#?}"
+                    ;;
+                esac
+                ;;
+            esac
+		xsetroot -name " [${mpd}][${disk}][${memory}][${vol}][${con}][${time}]"
 	done
 }
 
@@ -104,6 +126,7 @@ memory > "$fifo" &
 disk > "$fifo" &
 volume > "$fifo" &
 internet > "$fifo" &
+$SCRIPT_DIR/mpd.sh > "$fifo" &
 
 parsefifo < "$fifo"
 

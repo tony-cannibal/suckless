@@ -17,8 +17,8 @@ setxkbmap -option caps:swapescape
 # mpd &
 run "mpd"
 
-# $HOME/.dwm/scripts/dwm-bar.sh &
-$HOME/.config/suckless/.dwm/lstat.sh &
+$HOME/.dwm/scripts/dwm-bar &
+# $HOME/.config/suckless/.dwm/lstat.sh &
 
 feh --bg-fill $HOME/.dwm/Wallpapers/android.png &
 
