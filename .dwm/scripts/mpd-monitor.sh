@@ -23,7 +23,7 @@ err="MPD error: Connection refused"
 while true ; do
     res=$(mpc 2>&1 | head -n 1)
     if [[ $res = $err ]] ; then
-        echo -e "Msconnecting"
+        echo -e "MsConnecting"
     else
         mpdstate
         mpc idleloop player 2>&1 | while read -r line ; do

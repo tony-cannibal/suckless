@@ -126,7 +126,7 @@ memory > "$fifo" &
 disk > "$fifo" &
 volume > "$fifo" &
 internet > "$fifo" &
-$SCRIPT_DIR/mpd.sh > "$fifo" &
+$SCRIPT_DIR/mpd-monitor.sh > "$fifo" &
 
 parsefifo < "$fifo"
 
